@@ -51,11 +51,19 @@ function operate(operator, a, b){
     }
 }
 
+const clearbtn = document.querySelector('#resetbutton')
 const display = document.querySelector('p')
-const calculatorbtns = document.querySelectorAll('button')
+let displayValue = [];
+const calculatorbtns = document.querySelectorAll('button.operatorbtn, button.numberbtn')
 
 calculatorbtns.forEach(element => {
     element.addEventListener('click', (e) => {
         display.textContent = e.target.value;
+        displayValue.push(e.target.value);
     })
+})
+
+clearbtn.addEventListener('click', (e) =>{
+    displayValue = [];
+    display.textContent = '';
 })
