@@ -50,3 +50,12 @@ function operate(operator, a, b){
         return division;
     }
 }
+
+const display = document.querySelector('p')
+const calculatorbtns = document.querySelectorAll('button')
+
+calculatorbtns.forEach(element => {
+    element.addEventListener('click', (e) => {
+        display.textContent = e.target.value;
+    })
+})

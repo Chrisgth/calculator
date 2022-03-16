@@ -4,7 +4,7 @@ body{
     height: 100vh;
     align-items: center;
 }
-#calculatorbtns{
+#opbuttons{
     display: flex;
     height: 240px;
     width: 200px;
@@ -39,14 +39,23 @@ button{
     padding: 8px;
 }
 p{
-    flex: 3;
+    flex: 5;
     text-align: center;
     border: 2px solid black;
     height: 100%;
     margin: 0;
     line-height: 40px;
+    width: 100%;
 }
 #reset{
     flex: 1;
     border: 2px solid black;
+}
+
+button:hover{
+    background-color: yellow;
+}
+
+button:active{
+    background-color: orange;
 }
