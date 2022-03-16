@@ -34,6 +34,7 @@ function divide(a, b){
 // Create a new function operate that takes an operator and 2 numbers 
 // and then calls one of the above functions on the numbers.
 
+// Redo with switch for practice after finished
 function operate(operator, a, b){
     if(operator === "+"){
         add(a,b);
