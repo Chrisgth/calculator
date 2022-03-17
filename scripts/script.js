@@ -53,17 +53,49 @@ function operate(operator, a, b){
 
 const clearbtn = document.querySelector('#resetbutton')
 const display = document.querySelector('p')
-let displayValue = [];
-const calculatorbtns = document.querySelectorAll('button.operatorbtn, button.numberbtn')
+let displayValue = '';
+let operatorValue = '';
+let numericValueOne = '';
+const operatorbtns = document.querySelectorAll('button.operatorbtn')
+const numberbtns = document.querySelectorAll('button.numberbtn')
+const equalsbtn = document.querySelector('.equalsbtn')
 
-calculatorbtns.forEach(element => {
+operatorbtns.forEach(element => {
     element.addEventListener('click', (e) => {
-        display.textContent = e.target.value;
-        displayValue.push(e.target.value);
+        operatorValue = e.target.value;
+        if(displayValue !== ''){
+            numericValueOne = displayValue;
+            displayValue = '';
+        } else {
+            displayValue = '';
+        }
+    })
+})
+
+numberbtns.forEach(element =>{
+    element.addEventListener('click', (e) =>{
+        displayValue += e.target.value
+        display.textContent = displayValue;
     })
 })
 
 clearbtn.addEventListener('click', (e) =>{
-    displayValue = [];
+    displayValue = '';
     display.textContent = '';
+    numericValueOne = '';
+    operatorValue = '';
 })
+
+equalsbtn.addEventListener('click', () =>{
+    numericValueOne = Number(numericValueOne);
+    displayValue = Number(displayValue);
+    displayValue = operate(operatorValue, numericValueOne, displayValue)
+    if(displayValue === undefined){
+        displayValue = '';
+        display.textContent = displayValue;
+    } else {
+        display.textContent = displayValue;
+    }
+})
+// Make the calculator work! You’ll need to store the first number that is input into the calculator when a user presses an operator,
+// and also save which operation has been chosen and then operate() on them when the user presses the “=” key.
