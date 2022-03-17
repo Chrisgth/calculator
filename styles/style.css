@@ -45,7 +45,8 @@ p{
     height: 100%;
     margin: 0;
     line-height: 40px;
-    width: 100%;
+    max-width:122px;
+    overflow:hidden;
 }
 #reset{
     flex: 1;
