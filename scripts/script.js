@@ -62,11 +62,17 @@ const equalsbtn = document.querySelector('.equalsbtn')
 
 operatorbtns.forEach(element => {
     element.addEventListener('click', (e) => {
+        if(numericValueOne !== ''){
+            numericValueOne = Number(numericValueOne);
+            displayValue = Number(displayValue);
+            displayValue = operate(operatorValue, numericValueOne, displayValue)
+            display.textContent = displayValue;
+        }
         operatorValue = e.target.value;
         if(displayValue !== ''){
             numericValueOne = displayValue;
             displayValue = '';
-        } else {
+        }else{
             displayValue = '';
         }
     })
@@ -96,6 +102,10 @@ equalsbtn.addEventListener('click', () =>{
     } else {
         display.textContent = displayValue;
     }
+numericValueOne = '';
 })
 // Make the calculator work! You’ll need to store the first number that is input into the calculator when a user presses an operator,
 // and also save which operation has been chosen and then operate() on them when the user presses the “=” key.
+
+// Users should be able to string together several operations and get the right answer, with each pair of numbers being evaluated at a time. 
+// For example, 12 + 7 - 5 * 3 = should yield 42.
